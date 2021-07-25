@@ -10,3 +10,5 @@ const menuRender = function () {
 
   menuListEl.insertAdjacentHTML('beforeend', createMenuMarkup(menu));
 };
+
+export default menuRender();
