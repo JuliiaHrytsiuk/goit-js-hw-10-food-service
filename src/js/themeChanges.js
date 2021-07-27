@@ -6,26 +6,24 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
-const themeChanges = function () {
-  if (localStorage.getItem('Theme') === Theme.LIGHT || localStorage.getItem('Theme') === false) {
-    themeEl.checked = false;
-    bodyEl.classList.add('light-theme');
-  } else if (localStorage.getItem('Theme') === Theme.DARK) {
-    themeEl.checked = true;
-    bodyEl.classList.add('dark-theme');
+if (localStorage.getItem('theme') === Theme.DARK) {
+  bodyEl.classList.add(Theme.DARK);
+} else {
+  bodyEl.classList.add(Theme.LIGHT);
+}
+
+themeEl.addEventListener('input', onThemeEl);
+
+function onThemeEl(event) {
+  if (!event.target.checked) {
+    localStorage.setItem('theme', Theme.LIGHT);
+    bodyEl.classList.add(Theme.LIGHT);
+    bodyEl.classList.remove(Theme.DARK);
+  } else {
+    localStorage.setItem('theme', Theme.DARK);
+    bodyEl.classList.add(Theme.DARK);
+    bodyEl.classList.remove(Theme.LIGHT);
   }
+}
 
-  const onToggle = () => {
-    if (themeEl.checked) {
-      bodyEl.classList.replace('light-theme', 'dark-theme');
-      localStorage.setItem('Theme', Theme.DARK);
-    } else {
-      bodyEl.classList.replace('dark-theme', 'light-theme');
-      localStorage.setItem('Theme', Theme.LIGHT);
-    }
-  };
-
-  themeEl.addEventListener('change', onToggle);
-};
-
-export default themeChanges();
+export default onThemeEl();
