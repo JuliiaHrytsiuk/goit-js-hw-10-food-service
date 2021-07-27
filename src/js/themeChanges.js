@@ -25,5 +25,3 @@ function onThemeEl(event) {
     bodyEl.classList.remove(Theme.LIGHT);
   }
 }
-
-export default onThemeEl();
