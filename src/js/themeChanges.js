@@ -7,6 +7,8 @@ const Theme = {
 };
 
 if (localStorage.getItem('theme') === Theme.DARK) {
+  const currentTheme = localStorage.getItem('theme');
+  themeEl.setAttribute('checked', 'checked');
   bodyEl.classList.add(Theme.DARK);
 } else {
   bodyEl.classList.add(Theme.LIGHT);
